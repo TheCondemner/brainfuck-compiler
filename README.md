@@ -11,6 +11,10 @@ Write all your `.bf` code within the `source/` directory, and then run `npm run 
 
 The selected files will then appear compiled within the `out/` directory, whereby you can run `npm run exec` to select and execute the files.
 
+### Arguments
+
+You can pass index-based arguments to `npm run compile` and `npm run exec`. Eg: `npm run compile 0`, this program will compile the 1st file alphabetically. 
+Not passing any arguments will cause the regular TUI to pop-up. 
 
 ## Editing
 
