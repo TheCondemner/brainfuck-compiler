@@ -33,12 +33,11 @@ const fs = __importStar(require("fs"));
 /* -------------------------------------------------------------------------- */
 const sourcePath = path.join(__dirname, '../source');
 const files = fs.readdirSync(sourcePath);
-let validFiles = new Array();
+let validFiles = [];
 // Find all files ending with .js
 files.forEach((file) => {
     if (file.length >= 4 && file.endsWith('.bf')) {
         validFiles.push(file);
     }
-    ;
 });
 exports.default = validFiles;

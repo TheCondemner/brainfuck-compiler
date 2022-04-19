@@ -36,31 +36,44 @@ const fs = __importStar(require("fs"));
 /* -------------------------------------------------------------------------- */
 const sourcePath = path.join(__dirname, '../out');
 const files = fs.readdirSync(sourcePath);
-let validFiles = new Array();
+let validFiles = [];
 // Find all files ending with .js
 files.forEach((file) => {
     if (file.length >= 4 && file.endsWith('.js')) {
         validFiles.push(file);
     }
 });
-// Get arguments and run based on them
-const args = process_1.argv;
-args.forEach((val, index) => {
-    console.log(val, index);
-});
-// Query to be used in question
-const query = `Which .js files do you want to execute?\n${validFiles
-    .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`)
-    .join('')}\n> `;
-let pickedFiles = (0, readline_sync_1.question)(query).split(' '); // Ask user to input index of files to run via cli
-// Make sure input is valid & format it for program
-pickedFiles = pickedFiles
-    .filter(function (index) {
+// Get arguments and format them correctly
+const args = process_1.argv
+    .slice(2)
+    .map((val) => val[0]) // Get only value of argument, not index
+    .filter((val) => {
     return validFiles
         .map((file) => `${validFiles.indexOf(file)}`)
-        .includes(index);
+        .includes(val);
 })
-    .map((answer) => validFiles[parseInt(answer)]);
+    .map((val) => validFiles[parseInt(val)]);
+let pickedFiles = [];
+// Either query user, or just run if valid arguments present
+if (!(args.length > 0)) {
+    // Query to be used in question
+    const query = `Which .js files do you want to execute?\n${validFiles
+        .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`)
+        .join('')}\n> `;
+    pickedFiles = (0, readline_sync_1.question)(query).split(' '); // Ask user to input index of files to run via cli
+    // Make sure input is valid & format it for program
+    pickedFiles = pickedFiles
+        .filter(function (index) {
+        return validFiles
+            .map((file) => `${validFiles.indexOf(file)}`)
+            .includes(index);
+    })
+        .map((answer) => validFiles[parseInt(answer)]);
+}
+else {
+    pickedFiles = args;
+}
+// Run files
 pickedFiles.forEach((file) => {
     (0, child_process_1.exec)(`node out/${file}`, (err, stdout, stderr) => {
         console.log(`\nRunning: ${file}\n`);

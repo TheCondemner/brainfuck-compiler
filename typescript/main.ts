@@ -14,6 +14,7 @@ import { argv } from 'process';
 /* -------------------------------------------------------------------------- */
 const bfFiles: string[] = validFiles.default;
 
+// Get arguments and format them correctly
 const args: any[] = argv
   .slice(2)
   .map((val) => val[0]) // Get only value of argument, not index
