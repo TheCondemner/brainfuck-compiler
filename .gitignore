@@ -1,6 +1,6 @@
 # Source & Out folders
-source
-out
+source/
+out/
 
 # Logs
 logs
