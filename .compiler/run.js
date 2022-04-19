@@ -1,6 +1,4 @@
 "use strict";
-/* ---------------------------------- Notes --------------------------------- */
-//TODO Add catch exceptions n stuff
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -29,23 +27,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /*                                   Imports                                  */
 /* -------------------------------------------------------------------------- */
 const readline_sync_1 = require("readline-sync");
-const validFiles = __importStar(require("./locate"));
-const compile_1 = require("./compile");
+const child_process_1 = require("child_process");
+const path = __importStar(require("path"));
+const fs = __importStar(require("fs"));
 /* -------------------------------------------------------------------------- */
 /*                                   Runtime                                  */
 /* -------------------------------------------------------------------------- */
-const bfFiles = validFiles.default;
+const sourcePath = path.join(__dirname, '../out');
+const files = fs.readdirSync(sourcePath);
+let validFiles = new Array();
+// Find all files ending with .js
+files.forEach((file) => {
+    if (file.length >= 4 && file.endsWith('.js')) {
+        validFiles.push(file);
+    }
+});
 // Query to be used in question
-const query = `Which .bf files do you want to compile?\n${bfFiles
-    .map((file) => ` (${bfFiles.indexOf(file)}) ${file}\n`)
+const query = `Which .js files do you want to compile?\n${validFiles
+    .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`)
     .join('')}\n> `;
 let pickedFiles = (0, readline_sync_1.question)(query).split(' '); // Ask user to input index of files to run via cli
 // Make sure input is valid & format it for program
 pickedFiles = pickedFiles
     .filter(function (index) {
-    return bfFiles.map((file) => `${bfFiles.indexOf(file)}`).includes(index);
+    return validFiles
+        .map((file) => `${validFiles.indexOf(file)}`)
+        .includes(index);
 })
-    .map((answer) => bfFiles[parseInt(answer)].slice(0, -3));
+    .map((answer) => validFiles[parseInt(answer)]);
 pickedFiles.forEach((file) => {
-    (0, compile_1.compile)(file);
+    (0, child_process_1.exec)(`node out/${file}`, (err, stdout, stderr) => {
+        console.log(`\nRunning: ${file}\n\n`);
+        if (err) {
+            console.log(`error: ${err.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout:\n${stdout}`);
+    });
 });
