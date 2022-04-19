@@ -1,6 +1,8 @@
 # Source & Out folders
-source/
-out/
+source/*
+!source/example.bf
+out/*
+!out/example.js
 
 # Logs
 logs
