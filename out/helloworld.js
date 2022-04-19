@@ -1,5 +1,11 @@
 /* ------------------------------- Code Header ------------------------------ */ 
 const input = require("readline-sync"); 
+const fs = require("fs"); 
+const path = require("path"); 
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../config.json"), "utf-8")); 
+
+const min = config.generationRange.min; 
+const max = config.generationRange.max; 
 
 let data = new Array(30000).fill(0); 
 let pointer = 0; 

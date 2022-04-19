@@ -28,6 +28,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* -------------------------------------------------------------------------- */
 const readline_sync_1 = require("readline-sync");
 const child_process_1 = require("child_process");
+const process_1 = require("process");
 const path = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 /* -------------------------------------------------------------------------- */
@@ -42,8 +43,13 @@ files.forEach((file) => {
         validFiles.push(file);
     }
 });
+// Get arguments and run based on them
+const args = process_1.argv;
+args.forEach((val, index) => {
+    console.log(val, index);
+});
 // Query to be used in question
-const query = `Which .js files do you want to compile?\n${validFiles
+const query = `Which .js files do you want to execute?\n${validFiles
     .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`)
     .join('')}\n> `;
 let pickedFiles = (0, readline_sync_1.question)(query).split(' '); // Ask user to input index of files to run via cli
@@ -57,7 +63,7 @@ pickedFiles = pickedFiles
     .map((answer) => validFiles[parseInt(answer)]);
 pickedFiles.forEach((file) => {
     (0, child_process_1.exec)(`node out/${file}`, (err, stdout, stderr) => {
-        console.log(`\nRunning: ${file}\n\n`);
+        console.log(`\nRunning: ${file}\n`);
         if (err) {
             console.log(`error: ${err.message}`);
             return;

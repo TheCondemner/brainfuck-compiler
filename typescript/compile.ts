@@ -8,10 +8,16 @@ import * as fs from 'fs';
 /*                                   Runtime                                  */
 /* -------------------------------------------------------------------------- */
 export function compile(name: string) {
+  const config = JSON.parse(fs.readFileSync(path.join(__dirname, '../config.json'), 'utf-8'));
+
   const filePath = path.join(__dirname, `../source/${name}.bf`);
 
   const compiledFilePath = path.join(__dirname, `../out/${name}.js`);
   const validCode = ['+', '-', '.', ',', '[', ']', '<', '>'];
+  // If allowRandomGeneration property in config is true, allow ? symbol
+  if (config.allowRandomGeneration) {
+    validCode.push('?');
+  }
 
   const fileContent: string[] = fs
     .readFileSync(filePath, 'utf8')
@@ -22,7 +28,13 @@ export function compile(name: string) {
 
   let compiledFileContent: string =
     '/* ------------------------------- Code Header ------------------------------ */ \n' +
-    'const input = require("readline-sync"); \n\n' +
+    'const input = require("readline-sync"); \n' +
+    'const fs = require("fs"); \n' +
+    'const path = require("path"); \n' +
+    'const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../config.json"), "utf-8")); \n\n' +
+
+    'const min = config.generationRange.min; \n' +
+    'const max = config.generationRange.max; \n\n' +
 
     'let data = new Array(30000).fill(0); \n' +
     'let pointer = 0; \n\n' +
@@ -71,6 +83,10 @@ export function compile(name: string) {
         append('};');
         break;
       }
+      case '?': {
+        append('data[pointer] = Math.floor(Math.random() * (max - min + 1) ) + min;');
+        break;
+      }
 
       default: {
         break;
@@ -81,3 +97,4 @@ export function compile(name: string) {
   //? Final Write
   fs.writeFileSync(compiledFilePath, compiledFileContent);
 }
+

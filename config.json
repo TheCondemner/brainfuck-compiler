@@ -1,0 +1,7 @@
+{
+    "allowRandomGeneration" : true,
+    "generationRange" : {
+        "min" : 0,
+        "max" : 2
+    }
+}

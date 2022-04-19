@@ -46,6 +46,8 @@ pickedFiles = pickedFiles
     return bfFiles.map((file) => `${bfFiles.indexOf(file)}`).includes(index);
 })
     .map((answer) => bfFiles[parseInt(answer)].slice(0, -3));
+console.log('');
 pickedFiles.forEach((file) => {
     (0, compile_1.compile)(file);
+    console.log(`${file}.bf was compiled.`);
 });
