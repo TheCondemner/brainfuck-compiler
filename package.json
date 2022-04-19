@@ -10,8 +10,8 @@
   "scripts": {
     "build" : "tsc",
 
-    "compile" : "node .compiler/main.js",
-    "exec" : "node .compiler/run.js",
+    "compile" : "node compiler/main.js",
+    "exec" : "node compiler/run.js",
 
     "dev" : "npx ts-node typescript/main.ts",
     "dexec" : "npx ts-node typescript/run.ts"
