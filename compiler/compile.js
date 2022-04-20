@@ -34,7 +34,7 @@ const fs = __importStar(require("fs"));
 /* -------------------------------------------------------------------------- */
 function compile(name) {
     const config = JSON.parse(fs.readFileSync(path.join(__dirname, '../config.json'), 'utf-8'));
-    const filePath = path.join(__dirname, `../source/${name}.bf`);
+    const filePath = path.join(__dirname, `../src/${name}.bf`);
     const compiledFilePath = path.join(__dirname, `../out/${name}.js`);
     const validCode = ['+', '-', '.', ',', '[', ']', '<', '>'];
     // If allowRandomGeneration property in config is true, allow ? symbol

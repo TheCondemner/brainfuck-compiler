@@ -1,22 +1,36 @@
 # Brainfuck Compiler
 
 ## Information
+---
 
 This is a simple `.bf` compiler written in TypeScript, and then compiled to JavaScript.
 
+## Installation Instructions
+---
+
+- Clone the repo by running `git clone https://github.com/TheCondemner/brainfuck-compiler.git` or otherwise.
+- Enter the newly created folder.
+- Run `npm install` to download all package dependencies.
 
 ## Utilization
+---
 
-Write all your `.bf` code within the `source/` directory, and then run `npm run compile` within your command line.
+Write all your `.bf` code within the `src/` directory, and then run `npm run main` within your command line. <br>
 
-The selected files will then appear compiled within the `out/` directory, whereby you can run `npm run exec` to select and execute the files.
 
 ### Arguments
+---
 
-You can pass index-based arguments to `npm run compile` and `npm run exec`. Eg: `npm run compile 0`, this program will compile the 1st file alphabetically. 
+You can use `comp` or `run` with the file's index to immediately compile and run it, without going through the questions. <br><br>
+**Example Usage**: <br>
+`$ npm run main comp 0 `<br>
+`> main`
+`> node compiler/main.js "comp" "0"`<br><br>
+`example.bf was compiled` <br>
 
-Not passing any arguments will cause the regular TUI to pop-up. 
+*Note: The `comp` or `run` argument only looks at the first letter, so `c` and `r` are also valid.*
 
 ## Editing
+---
 
 Refer to the `typescript/README.md` for general information on editing the compiler itself.
