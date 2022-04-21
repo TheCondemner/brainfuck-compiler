@@ -84,8 +84,8 @@ function main(option, args) {
 /*                                   Runtime                                  */
 /* -------------------------------------------------------------------------- */
 // Get arguments and format them correctly
-const args = process_1.argv.slice(2).map((val) => val[0]); // Get only value of argument, not index
-switch (args[0]) {
+const args = process_1.argv.slice(2); // Get only value of argument, not index
+switch (args[0][0]) {
     // If valid args provided
     case 'c': {
         main('compile', args);
@@ -100,10 +100,15 @@ switch (args[0]) {
         const query = 'Do you want to compile / run?\n(0) compile\n(1) run\n\n> ';
         const ans = (0, readline_sync_1.question)(query);
         switch (ans) {
+            case 'compile':
+            case 'comp':
+            case 'c':
             case '0': {
                 main('compile', args);
                 break;
             }
+            case 'run':
+            case 'r':
             case '1': {
                 main('run', args);
                 break;

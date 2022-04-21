@@ -11,7 +11,7 @@ const child_process_1 = require("child_process");
 // Run files
 function run(file) {
     (0, child_process_1.exec)(`node out/${file}.js`, (err, stdout, stderr) => {
-        console.log(`\nRunning: ${file}\n`);
+        console.log(`\nRunning: ${file}.js\n`);
         if (err) {
             console.log(`error: ${err.message}`);
             return;

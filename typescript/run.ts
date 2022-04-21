@@ -10,7 +10,7 @@ import { exec } from 'child_process';
 // Run files
 export function run (file : string) {
   exec(`node out/${file}.js`, (err, stdout, stderr) => {
-    console.log(`\nRunning: ${file}\n`);
+    console.log(`\nRunning: ${file}.js\n`);
 
     if (err) {
       console.log(`error: ${err.message}`);

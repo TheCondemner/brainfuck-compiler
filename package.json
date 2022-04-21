@@ -11,6 +11,6 @@
     "build" : "tsc",
     "dev" : "npx ts-node typescript/main.ts",
 
-    "main" : "node compiler/main.js"
+    "start" : "node compiler/main.js"
   }
 }

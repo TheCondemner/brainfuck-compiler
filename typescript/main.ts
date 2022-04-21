@@ -21,7 +21,7 @@ function main(option: string, args: string[]) {
   validFiles.forEach((file) => {
     validFiles.push(`${validFiles.indexOf(file)}`);
   });
-
+  
   args = args.slice(1).filter((arg) => {
     return validFiles.includes(arg);
   });
@@ -95,9 +95,9 @@ function main(option: string, args: string[]) {
 /* -------------------------------------------------------------------------- */
 
 // Get arguments and format them correctly
-const args: any[] = argv.slice(2).map((val) => val[0]); // Get only value of argument, not index
+const args: any[] = argv.slice(2); // Get only value of argument, not index
 
-switch (args[0]) {
+switch (args[0][0]) {
   // If valid args provided
   case 'c': {
     main('compile', args);
@@ -114,10 +114,15 @@ switch (args[0]) {
     const ans: string = question(query);
 
     switch (ans) {
-      case '0': {
+      case 'compile':
+      case 'comp':
+      case 'c':
+      case '0' : {
         main('compile', args);
         break;
       }
+      case 'run':
+      case 'r':
       case '1': {
         main('run', args);
         break;
