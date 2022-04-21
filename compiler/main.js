@@ -14,37 +14,63 @@ const run_1 = require("./run");
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function main(option, args) {
-    const validFiles = option == 'compile' ? (0, locate_1.getFiles)('../src', '.bf') : (0, locate_1.getFiles)('../out', '.js');
-    args = args
-        .slice(1)
-        .filter((arg) => {
-        return validFiles
-            .map((file) => `${validFiles.indexOf(file)}`)
-            .includes(arg);
-    })
-        .map((file) => validFiles[parseInt(file)].slice(0, -3));
+    let validFiles = option == 'compile' ? (0, locate_1.getFiles)('../src', '.bf') : (0, locate_1.getFiles)('../out', '.js');
+    // Add indexes of files as valid options
+    validFiles.forEach((file) => {
+        validFiles.push(`${validFiles.indexOf(file)}`);
+    });
+    args = args.slice(1).filter((arg) => {
+        return validFiles.includes(arg);
+    });
+    // Convert valid file indexes to file names
+    args.forEach((arg) => {
+        //! I didn't know a better method of validating if a string can be an integer
+        try {
+            if (!isNaN(parseInt(arg))) {
+                args[args.indexOf(arg)] = validFiles[parseInt(arg)];
+            }
+        }
+        catch (err) {
+            // Intentionally do nothing
+        }
+    });
+    args = [...new Set(args)].map((arg) => arg.slice(0, -3)); // Remove all duplicates & remove extension
     let pickedFiles = [];
     if (args.length > 0) {
+        // If valid arguments provided
         pickedFiles = args;
     }
     else {
+        // If no valid arguments provided
         const query = `\nWhich files do you want to ${option}?\n${validFiles
-            .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`)
+            .slice(0, -(validFiles.length / 2)) // Only include file names in query
+            .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`) // Format query to (file_index) file_name
             .join('')}\n> `;
         pickedFiles = (0, readline_sync_1.question)(query).split(' ');
-        pickedFiles = pickedFiles
-            .filter((index) => {
-            return validFiles
-                .map((file) => `${validFiles.indexOf(file)}`)
-                .includes(index);
-        })
-            .map((file) => validFiles[parseInt(file)].slice(0, -3));
+        pickedFiles = pickedFiles.filter((answer) => {
+            return validFiles.includes(answer);
+        });
+        // Convert valid file indexes to file names
+        pickedFiles.forEach((answer) => {
+            //! I didn't know a better method of validating if a string can be an integer
+            try {
+                if (!isNaN(parseInt(answer))) {
+                    pickedFiles[pickedFiles.indexOf(answer)] =
+                        validFiles[parseInt(answer)];
+                }
+            }
+            catch (err) {
+                // Intentionally do nothing
+            }
+        });
+        pickedFiles = [...new Set(pickedFiles)].map((file) => file.slice(0, -3)); // Remove all duplicates & remove extension
     }
+    //? Compile / run depending on passed option
     pickedFiles.forEach((file) => {
         switch (option) {
             case 'compile': {
                 (0, compile_1.compile)(file);
-                console.log(`${file}.bf was compiled.`);
+                console.log(`${file}.bf was compiled`);
                 break;
             }
             case 'run': {
@@ -60,6 +86,7 @@ function main(option, args) {
 // Get arguments and format them correctly
 const args = process_1.argv.slice(2).map((val) => val[0]); // Get only value of argument, not index
 switch (args[0]) {
+    // If valid args provided
     case 'c': {
         main('compile', args);
         break;
@@ -69,6 +96,7 @@ switch (args[0]) {
         break;
     }
     default: {
+        // If no valid args provided
         const query = 'Do you want to compile / run?\n(0) compile\n(1) run\n\n> ';
         const ans = (0, readline_sync_1.question)(query);
         switch (ans) {
@@ -86,37 +114,3 @@ switch (args[0]) {
         }
     }
 }
-/*
-  .filter((val) => { // Filter off invalid args
-    return validFiles
-      .map((file) => `${validFiles.indexOf(file)}`)
-      .includes(val);
-  })
-  .map((val) => validFiles[parseInt(val)].slice(0, -3));
-*/
-/*
-let pickedFiles: string[] = [];
-
-// Either query user, or just run if valid arguments present
-if (!(args.length > 0)) {
-  // Query to be used in question
-  const query: string = `Which .bf files do you want to compile?\n${validFiles
-    .map((file) => ` (${validFiles.indexOf(file)}) ${file}\n`)
-    .join('')}\n> `;
-  
-  pickedFiles = question(query).split(' '); // Ask user to input index of files to run via cli
-  // Make sure input is valid & format it for program
-  pickedFiles = pickedFiles
-    .filter((index) => {
-      return validFiles.map((file) => `${validFiles.indexOf(file)}`).includes(index);
-    })
-    .map((answer) => validFiles[parseInt(answer)].slice(0, -3));
-} else {
-  pickedFiles = args;
-}
-
-pickedFiles.forEach((file) => {
-  compile(file);
-  console.log(`${file}.bf was compiled.`);
-});
-*/
