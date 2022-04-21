@@ -1,12 +1,23 @@
 <div id="top"></div>
 
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<h1 align="center">TSFuck</h1>
+  <p align="center">
+    Simple brainfuck compiler & runner made in TypeScript / JavaScript.
+    <br />
+    <br />
+    <a href="https://github.com/TheCondemner/brainfuck-compiler/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/TheCondemner/brainfuck-compiler/issues">Request Feature</a>
+  </p>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -34,87 +45,118 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## About The Project <br />
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+![TSFuck Screen Shot][product-screenshot]
 
-This is just a simple, TypeScript-based, brainfuck compiler. This was written as a side-project, so updates, or issue fixes may be infrequent.
-The compiler supports -
-* Compiling and running multiple files at the same time;
-* An inbuilt terminal user interface to compile files;
+This is a simple compiler for .bf files, to get started with using it, look at the <a href="#getting_started">Getting Started</a> section.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+The compiler was written as a side-project for personal use, so updates will be infrequent.
 
-
-
-<!-- GETTING STARTED -->
-## Getting Started
+<!-- GETTING STARTED --> <br />
+## Getting Started <br />
 
 ### Prerequisites
 
 These are the prerequisites that are needed to run the program.
-* [Node.JS](https://nodejs.org/en/)
+* [Node.JS](https://nodejs.org/en/) (npm is included with Node.JS)
 
 ### Installation Instructions
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/TheCondemner/brainfuck-compiler.git
+   $ git clone https://github.com/TheCondemner/brainfuck-compiler.git
    ```
-2. Install NPM packages
+2. Enter folder
    ```sh
-   npm install
+   $ cd brainfuck-compiler
    ```
-
+3. Install NPM packages
+   ```sh
+   $ npm install
+   ```
+4. Refer to the Usage section to see how to use the compiler.   
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Usage <br />
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+To get started with the compiler, simply do `npm start`. This is the prompt you will be faced with:
+```sh
+$ npm start
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+Do you want to compile / run?
+(0) compile
+(1) run
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+>
+```
+From here, you can follow on-screen instructions to compile / run files.
+```sh
+$ npm start
 
+Do you want to compile / run?
+(0) compile
+(1) run
+
+> compile
+
+Which files do you want to compile?
+ (0) example.bf
+
+> example.bf
+example.bf was compiled
+```
+You can also use the file's index to compile / run it.
+```sh
+Which files do you want to compile?
+ (0) example.bf
+
+> example.bf
+example.bf was compiled
+```
+You can also pass arguments to `npm start`, such as `run`, or `comp`.
+```sh
+$ npm start run example.js
+
+Running: example.js
+
+stdout:
+H
+e
+l
+l
+o
+
+W
+o
+r
+l
+d
+!
+```
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Roadmap <br />
 
 - [X] Centralize to `main.js`.
+- [ ] Allow file names to be used during usage.
 - [ ] Update all READMEs to reflect actual usage.
 - [ ] Allow compilation to executable files.
 
+More features may be added here down the line.
 
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what help improve the compiler, and as I may not have the best understanding of both Brainfuck and TypeScript / JavaScript, they are greatly appreciated.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
+<p align="right">(<a href="#top">Back to Top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
 [contributors-url]: https://github.com/TheCondemner/brainfuck-compiler/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/TheCondemner/brainfuck-compiler/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
 [stars-url]: https://github.com/TheCondemner/brainfuck-compiler/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]:https://github.com/TheCondemner/brainfuck-compiler/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
+[issues-url]: https://github.com/TheCondemner/brainfuck-compiler/issues
+[license-shield]: https://img.shields.io/github/license/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
 [license-url]: https://github.com/TheCondemner/brainfuck-compiler/blob/master/LICENSE.txt
-<!-- [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555 -->
-<!-- [linkedin-url]: https://linkedin.com/in/othneildrew -->
-<!-- [product-screenshot]: images/screenshot.png -->
+[product-screenshot]: screenshot.png
