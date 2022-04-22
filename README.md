@@ -1,22 +1,162 @@
-# Brainfuck Compiler
+<div id="top"></div>
 
-## Information
+[![Contributors][contributors-shield]][contributors-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-This is a simple `.bf` compiler written in TypeScript, and then compiled to JavaScript.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+<h1 align="center">TSFuck</h1>
+  <p align="center">
+    Simple brainfuck compiler & runner made in TypeScript / JavaScript.
+    <br />
+    <br />
+    <a href="https://github.com/TheCondemner/brainfuck-compiler/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/TheCondemner/brainfuck-compiler/issues">Request Feature</a>
+  </p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
 
-## Utilization
 
-Write all your `.bf` code within the `source/` directory, and then run `npm run compile` within your command line.
+<!-- ABOUT THE PROJECT -->
+## About The Project <br />
 
-The selected files will then appear compiled within the `out/` directory, whereby you can run `npm run exec` to select and execute the files.
+![TSFuck Screen Shot][product-screenshot]
 
-### Arguments
+This is a simple compiler for .bf files, to get started with using it, look at the <a href="#getting_started">Getting Started</a> section.
 
-You can pass index-based arguments to `npm run compile` and `npm run exec`. Eg: `npm run compile 0`, this program will compile the 1st file alphabetically. 
+The compiler was written as a side-project for personal use, so updates will be infrequent.
 
-Not passing any arguments will cause the regular TUI to pop-up. 
+<!-- GETTING STARTED --> <br />
+## Getting Started <br />
 
-## Editing
+### Prerequisites
 
-Refer to the `typescript/README.md` for general information on editing the compiler itself.
+These are the prerequisites that are needed to run the program.
+* [Node.JS](https://nodejs.org/en/) (npm is included with Node.JS)
+
+### Installation Instructions
+
+1. Clone the repo
+   ```sh
+   $ git clone https://github.com/TheCondemner/brainfuck-compiler.git
+   ```
+2. Enter folder
+   ```sh
+   $ cd brainfuck-compiler
+   ```
+3. Install NPM packages
+   ```sh
+   $ npm install
+   ```
+4. Refer to the Usage section to see how to use the compiler.   
+
+
+<!-- USAGE EXAMPLES -->
+## Usage <br />
+
+To get started with the compiler, simply do `npm start`. This is the prompt you will be faced with:
+```sh
+$ npm start
+
+Do you want to compile / run?
+(0) compile
+(1) run
+
+>
+```
+From here, you can follow on-screen instructions to compile / run files.
+```sh
+$ npm start
+
+Do you want to compile / run?
+(0) compile
+(1) run
+
+> compile
+
+Which files do you want to compile?
+ (0) example.bf
+
+> example.bf
+example.bf was compiled
+```
+You can also use the file's index to compile / run it.
+```sh
+Which files do you want to compile?
+ (0) example.bf
+
+> example.bf
+example.bf was compiled
+```
+You can also pass arguments to `npm start`, such as `run`, or `comp`.
+```sh
+$ npm start run example.js
+
+Running: example.js
+
+stdout:
+H
+e
+l
+l
+o
+
+W
+o
+r
+l
+d
+!
+```
+
+
+<!-- ROADMAP -->
+## Roadmap <br />
+
+- [X] Centralize to `main.js`.
+- [ ] Allow file names to be used during usage.
+- [ ] Update all READMEs to reflect actual usage.
+- [ ] Allow compilation to executable files.
+
+More features may be added here down the line.
+
+<p align="right">(<a href="#top">Back to Top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
+[contributors-url]: https://github.com/TheCondemner/brainfuck-compiler/graphs/contributors
+[stars-shield]: https://img.shields.io/github/stars/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
+[stars-url]: https://github.com/TheCondemner/brainfuck-compiler/stargazers
+[issues-shield]: https://img.shields.io/github/issues/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
+[issues-url]: https://github.com/TheCondemner/brainfuck-compiler/issues
+[license-shield]: https://img.shields.io/github/license/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
+[license-url]: https://github.com/TheCondemner/brainfuck-compiler/blob/master/LICENSE.txt
+[product-screenshot]: screenshot.png

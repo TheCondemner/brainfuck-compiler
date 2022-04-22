@@ -1,6 +1,6 @@
 # Source & Out folders
-source/*
-!source/example.bf
+src/*
+!src/example.bf
 out/*
 !out/example.js
 

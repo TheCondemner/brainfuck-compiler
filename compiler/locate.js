@@ -23,21 +23,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getFiles = void 0;
 /* -------------------------------------------------------------------------- */
 /*                                   Imports                                  */
 /* -------------------------------------------------------------------------- */
-const path = __importStar(require("path"));
+const p = __importStar(require("path"));
 const fs = __importStar(require("fs"));
 /* -------------------------------------------------------------------------- */
 /*                                   Runtime                                  */
 /* -------------------------------------------------------------------------- */
-const sourcePath = path.join(__dirname, '../source');
-const files = fs.readdirSync(sourcePath);
-let validFiles = [];
-// Find all files ending with .js
-files.forEach((file) => {
-    if (file.length >= 4 && file.endsWith('.bf')) {
-        validFiles.push(file);
-    }
-});
-exports.default = validFiles;
+function getFiles(fpath, suffix) {
+    const path = p.join(__dirname, fpath);
+    const files = fs.readdirSync(path);
+    let validFiles = [];
+    // Find all files ending with the suffix
+    files.forEach((file) => {
+        if (file.length >= 4 && file.endsWith(suffix)) {
+            validFiles.push(file);
+        }
+    });
+    return validFiles;
+}
+exports.getFiles = getFiles;
