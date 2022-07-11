@@ -35,16 +35,14 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
+<div id="about-the-project"></div>
+
 ## About The Project <br />
 
 ![TSFuck Screen Shot][product-screenshot]
@@ -54,6 +52,8 @@ This is a simple compiler for .bf files, to get started with using it, look at t
 The compiler was written as a side-project for personal use, so updates will be infrequent.
 
 <!-- GETTING STARTED --> <br />
+<div id="getting-started"></div>
+
 ## Getting Started <br />
 
 ### Prerequisites
@@ -62,6 +62,7 @@ These are the prerequisites that are needed to run the program.
 * [Node.JS](https://nodejs.org/en/) (npm is included with Node.JS)
 
 ### Installation Instructions
+<div id="installation"></div>
 
 1. Clone the repo
    ```sh
@@ -79,6 +80,8 @@ These are the prerequisites that are needed to run the program.
 
 
 <!-- USAGE EXAMPLES -->
+<div id="usage"></div>
+
 ## Usage <br />
 
 To get started with the compiler, simply do `npm start`. This is the prompt you will be faced with:
@@ -138,11 +141,13 @@ d
 
 
 <!-- ROADMAP -->
+<div id="roadmap"></div>
+
 ## Roadmap <br />
 
 - [X] Centralize to `main.js`.
-- [ ] Allow file names to be used during usage.
-- [ ] Update all READMEs to reflect actual usage.
+- [X] Allow file names to be used during usage.
+- [X] Update all READMEs to reflect actual usage.
 - [ ] Allow compilation to executable files.
 
 More features may be added here down the line.
@@ -157,6 +162,4 @@ More features may be added here down the line.
 [stars-url]: https://github.com/TheCondemner/brainfuck-compiler/stargazers
 [issues-shield]: https://img.shields.io/github/issues/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
 [issues-url]: https://github.com/TheCondemner/brainfuck-compiler/issues
-[license-shield]: https://img.shields.io/github/license/TheCondemner/brainfuck-compiler.svg?style=for-the-badge
-[license-url]: https://github.com/TheCondemner/brainfuck-compiler/blob/master/LICENSE.txt
 [product-screenshot]: screenshot.png
