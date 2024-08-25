@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<h1 align="center">TSFuck</h1>
+<h1 align="center">TSBF</h1>
   <p align="center">
     Simple brainfuck compiler & runner made in TypeScript / JavaScript.
     <br />
@@ -44,7 +44,7 @@
 
 ## About The Project <br />
 
-![TSFuck Screen Shot][product-screenshot]
+![TSBF Screen Shot][product-screenshot]
 
 This is a simple compiler for .bf files, to get started with using it, look at the <a href="#getting_started">Getting Started</a> section.
 
